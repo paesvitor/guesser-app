@@ -1,5 +1,6 @@
 import { Box, Button, CircularProgress, Container, Divider, LinearProgress, TextField } from '@material-ui/core'
 import React from 'react'
+import { AvatarPicker } from '../AvatarPicker'
 import { Logo } from '../Logo'
 
 function Signin() {
@@ -10,6 +11,10 @@ function Signin() {
 
         <Container maxWidth="xs">
             <Box display="flex" flexDirection="column">
+                <Box display="flex" justifyContent="center" mb={3}>
+                    <AvatarPicker />
+                </Box>
+
                 <Box mb={3}>
                     <TextField fullWidth label="Nome do jogador" variant="outlined" />
                 </Box>
