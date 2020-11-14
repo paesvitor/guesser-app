@@ -6,12 +6,12 @@ import { Button } from '../Button'
 import { Logo } from '../Logo'
 import { io } from "socket.io-client";
 
-const socket = io("ws://example.com/my-namespace", {
-    reconnectionDelayMax: 10000,
-    //   query: {
-    //     auth: "123"
-    //   }
-});
+// const socket = io("ws://localhost:8000", {
+//     reconnectionDelayMax: 10000,
+//     //   query: {
+//     //     auth: "123"
+//     //   }
+// });
 
 function Signin() {
     const router = useRouter();
@@ -24,10 +24,10 @@ function Signin() {
 
     function handleCreateRoom() {
         setLoading(true);
-        socket.emit('ROOM_CREATE', { name: 'username' });
-        socket.on('ROOM_STATE', (payload) => {
-            router.push(`/room/${payload.code}`)
-        })
+        // socket.emit('ROOM_CREATE', { name: 'username' });
+        // socket.on('ROOM_STATE', (payload) => {
+        //     router.push(`/room/${payload.code}`)
+        // })
     }
 
     return <Box height="100%" display="flex" flexDirection="column" justifyContent="center">

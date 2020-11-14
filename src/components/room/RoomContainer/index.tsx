@@ -18,10 +18,10 @@ function RoomContainer() {
             <RoomPlayerList />
 
             <section className={classes.gameWrapper}>
-                {/* <RoomAnswer /> */}
+                <RoomAnswer />
                 {/* <RoomControl /> */}
                 {/* <RoomAnswerOverview /> */}
-                <RoomEndGame />
+                {/* <RoomEndGame /> */}
             </section>
         </Box>
     </Box>

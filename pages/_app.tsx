@@ -2,6 +2,8 @@
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import type { AppProps /*, AppContext */ } from 'next/app'
 import theme from '../src/theme'
+import { Provider as StoreProvider } from 'react-redux'
+import { wrapper } from '../src/store'
 
 function App({ Component, pageProps }: AppProps) {
   return <ThemeProvider theme={theme}>
@@ -23,4 +25,4 @@ function App({ Component, pageProps }: AppProps) {
 //   return { ...appProps }
 // }
 
-export default App
+export default wrapper.withRedux(App);
