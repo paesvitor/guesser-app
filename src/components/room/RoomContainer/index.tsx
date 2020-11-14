@@ -10,16 +10,16 @@ import { useStyles } from './styles'
 function RoomContainer() {
     const classes = useStyles();
 
-    return <Box flex={1} display="flex" flexDirection="column" py={2}>
+    return <Box flex={1} display="flex" flexDirection="column" py={2} height="100%" overflow="hidden">
         <RoomTimer />
 
-        <Box display="flex" flex={1}>
+        <Box display="flex" flex={1} overflow="hidden ">
             <RoomPlayerList />
 
             <section className={classes.gameWrapper}>
-                {/* <RoomAnswer /> */}
+                <RoomAnswer />
                 {/* <RoomControl /> */}
-                <RoomAnswerOverview />
+                {/* <RoomAnswerOverview /> */}
             </section>
         </Box>
     </Box>

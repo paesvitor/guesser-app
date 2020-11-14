@@ -25,7 +25,6 @@ function RoomPlayerList(props: RoomPlayerListProps) {
         <RoomPlayerCard />
         <RoomPlayerCard />
         <RoomPlayerCard />
-        {/* <RoomPlayerCard />
         <RoomPlayerCard />
         <RoomPlayerCard />
         <RoomPlayerCard />
@@ -34,7 +33,8 @@ function RoomPlayerList(props: RoomPlayerListProps) {
         <RoomPlayerCard />
         <RoomPlayerCard />
         <RoomPlayerCard />
-        <RoomPlayerCard /> */}
+        <RoomPlayerCard />
+        <RoomPlayerCard />
     </Box>
 }
 

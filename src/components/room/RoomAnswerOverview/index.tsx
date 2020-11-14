@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@material-ui/core'
+import { Box, Button, Divider, TextField, Typography } from '@material-ui/core'
 import React from 'react'
 import Marker from '../../common/Marker';
 import RoomControl from '../RoomControl';
@@ -8,6 +8,18 @@ function RoomAnswerOverview() {
     const classes = useStyles();
 
     return <section className={classes.root}>
+        <Box mb={2}>
+            <Typography variant="h3">
+                Pergunta
+            </Typography>
+        </Box>
+
+        <Box mb={3}>
+            <Marker>
+                Quantas pessoas se chamam LUCAS?
+            </Marker>
+        </Box>
+
         <Box mb={2}>
             <Typography variant="h3">
                 Reposta
@@ -22,8 +34,18 @@ function RoomAnswerOverview() {
 
         <Box mb={2}>
             <Typography variant="h3">
-                Você fez 3900 pontos
+                Você fez
             </Typography>
+        </Box>
+
+        <Box mb={3}>
+            <Marker>
+                630 pontos
+            </Marker>
+        </Box>
+
+        <Box my={3}>
+            <Divider />
         </Box>
 
         <RoomControl />

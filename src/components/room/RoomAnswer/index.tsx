@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography } from '@material-ui/core'
 import React from 'react'
+import Marker from '../../common/Marker';
 import { useStyles } from './styles'
 
 function RoomAnswer() {
@@ -13,9 +14,9 @@ function RoomAnswer() {
         </Box>
 
         <Box mb={2}>
-            <section className={classes.category}>
+            <Marker>
                 Nomes do Brasil
-            </section>
+            </Marker>
         </Box>
 
         <Box mb={2}>
@@ -25,9 +26,9 @@ function RoomAnswer() {
         </Box>
 
         <Box mb={3}>
-            <Typography>
+            <Marker>
                 Quantas pessoas se chamam LUCAS?
-            </Typography>
+            </Marker>
         </Box>
 
         <Box mb={3}>

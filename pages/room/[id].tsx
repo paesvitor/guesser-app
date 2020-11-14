@@ -7,7 +7,7 @@ import { RoomEndGame } from "../../src/components/room/RoomEndGame";
 export default function Home() {
     return (
         <MainLayout>
-            <Box my={3}>
+            <Box mt={3} mb={0}>
                 <Logo />
             </Box>
             <RoomContainer />

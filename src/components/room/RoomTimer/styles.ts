@@ -4,8 +4,7 @@ export const useStyles = makeStyles((theme) => ({
   timer: {
     height: 27,
     borderRadius: 6,
-    marginBottom: theme.spacing(3),
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgb(0 0 0 / 19%)',
     border: '4px solid #000'
   }
 }));

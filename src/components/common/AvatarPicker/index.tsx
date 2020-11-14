@@ -26,7 +26,7 @@ function AvatarPicker(props: AvatarProps) {
     }
 
     function renderAvatars() {
-        return [Array(16).fill(0).map((_, i) => <Grid item xs={3}>
+        return [Array(16).fill(0).map((_, i) => <Grid item xs={6} sm={3}>
             <Box textAlign="center" mb={2}>
                 <img className={classes.avatar} src={`avatars/${i + 1}.png`} onClick={() => handleSelectAvatar(i + 1)} />
             </Box>

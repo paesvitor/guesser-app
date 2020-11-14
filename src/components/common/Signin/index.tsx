@@ -1,9 +1,13 @@
-import { Box, Button, CircularProgress, Container, Divider, LinearProgress, TextField } from '@material-ui/core'
+import { Box, Container, Divider, LinearProgress, TextField } from '@material-ui/core'
+import { useRouter } from 'next/dist/client/router'
 import React from 'react'
 import { AvatarPicker } from '../AvatarPicker'
+import { Button } from '../Button'
 import { Logo } from '../Logo'
 
 function Signin() {
+    const router = useRouter();
+
     return <Box height="100%" display="flex" flexDirection="column" justifyContent="center">
         <Box mb={6}>
             <Logo />
@@ -23,7 +27,7 @@ function Signin() {
                     <TextField fullWidth label="Código da sala" variant="outlined" />
                 </Box>
 
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" onClick={() => router.push('/room/2')}>
                     Entrar na sala
                 </Button>
 
@@ -31,10 +35,8 @@ function Signin() {
                     <Divider />
                 </Box>
 
-                <Button variant="contained" color="primary">
-                    <Box width="100%" pt={1}>
-                        <CircularProgress size={24} color="secondary" />
-                    </Box>
+                <Button onClick={() => router.push('/room/2')} variant="contained" color="primary">
+                    Criar sala
                 </Button>
             </Box>
         </Container>

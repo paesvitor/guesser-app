@@ -4,15 +4,17 @@ import React from 'react'
 function RoomControl() {
 
     return <Box display="flex">
-        <Box >
-            <Button variant="contained" color="primary">
+        <Box flex={1}>
+            <Button fullWidth variant="contained" color="primary">
                 Estou pronto
             </Button>
         </Box>
 
-        <Button variant="contained" color="secondary">
-            Forcar inicio da rodada
+        <Box flex={1}>
+            <Button fullWidth variant="contained" color="secondary">
+                Forcar inicio da rodada
         </Button>
+        </Box>
     </Box>
 }
 

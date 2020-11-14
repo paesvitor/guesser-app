@@ -10,7 +10,9 @@ export const useStyles = makeStyles((theme) => ({
   gameWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flex: 1,
+    overflow: 'hidden'
   },
 }));
 
