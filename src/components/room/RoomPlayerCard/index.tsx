@@ -4,14 +4,17 @@ import { RoomPlayerListProps } from '../RoomPlayerList';
 import { useStyles } from './styles'
 
 export interface RoomPlayerCardProps {
-    ready: boolean
+    ready: boolean,
+    avatar: number;
 }
 
 function RoomPlayerCard(props: RoomPlayerCardProps) {
+    const { avatar } = props;
+
     const classes = useStyles(props);
 
     return <section className={classes.root}>
-        <img className={classes.image} />
+        <img className={classes.image} src={`/avatars/${avatar}.png`} />
 
         <Box ml={2}>
             <div className={classes.playerName}>Player name</div>

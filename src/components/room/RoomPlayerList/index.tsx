@@ -11,6 +11,10 @@ function RoomPlayerList(props: RoomPlayerListProps) {
     const { ranking } = props;
     const classes = useStyles(props);
 
+    function renderPlayerCards() {
+        return [Array(16).fill(0).map((_, i) => <RoomPlayerCard avatar={i + 1} ready={true} />)]
+    }
+
     return <Box className={classes.root}>
         {!ranking && <Box mb={3}>
             <Typography variant="h3">
@@ -18,22 +22,7 @@ function RoomPlayerList(props: RoomPlayerListProps) {
             </Typography>
         </Box>}
 
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={false} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
-        <RoomPlayerCard ready={true} />
+        {renderPlayerCards()}
     </Box>
 }
 
