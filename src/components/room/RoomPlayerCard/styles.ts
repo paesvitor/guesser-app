@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { RoomPlayerCardProps } from '.';
 
 export const useStyles = makeStyles((theme) => ({
   root: ({
@@ -7,13 +8,14 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(3)
   }),
 
-  image: {
+  image: (props: RoomPlayerCardProps) => ({
     borderRadius: '50%',
     backgroundColor: '#000',
     width: 48,
     height: 48,
-    border: '4px solid #DE3232'
-  },
+    border: '4px solid',
+    borderColor: props.ready ? 'green' : 'red'
+  }),
 
   playerName: {
     fontWeight: 700,

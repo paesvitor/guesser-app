@@ -4,7 +4,7 @@ import { Signin } from "../src/components/common/Signin";
 
 export default function Home() {
   return (
-    <MainLayout>
+    <MainLayout navbar={false}>
       <Signin />
     </MainLayout>
   )

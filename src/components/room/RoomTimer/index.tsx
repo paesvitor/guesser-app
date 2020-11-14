@@ -2,6 +2,7 @@ import { Box, Container, LinearProgress, Typography } from '@material-ui/core'
 import React from 'react'
 import { useStyles } from './styles'
 
+
 function RoomTimer() {
     const classes = useStyles();
 
@@ -10,7 +11,7 @@ function RoomTimer() {
             Rodada 6/10
         </Typography>
 
-        <Box mb={2}>
+        <Box mb={1}>
             <Typography variant="h4" align="center">
                 Tempo restante
             </Typography>

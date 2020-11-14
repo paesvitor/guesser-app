@@ -10,8 +10,8 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     background: 'rgb(0 0 0 / 19%)',
     borderRadius: 6,
-    fontSize: 24,
-    fontWeight: 900
+    fontSize: 21,
+    fontWeight: 400
   }
 }));
 

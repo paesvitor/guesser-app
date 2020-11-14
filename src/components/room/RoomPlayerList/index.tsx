@@ -19,22 +19,22 @@ function RoomPlayerList(props: RoomPlayerListProps) {
         </Box>}
 
 
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
-        <RoomPlayerCard />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={false} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
+        <RoomPlayerCard ready={true} />
     </Box>
 }
 
