@@ -25,6 +25,10 @@ function Signin() {
         return true
     }
 
+    function emitJoinRoom() {
+        router.push('/room/3901')
+    }
+
     function handleJoinRoom(e: React.FormEvent) {
         e.preventDefault();
 
@@ -32,6 +36,8 @@ function Signin() {
             enqueueSnackbar('Preencha um nome antes de entrar na sala', { variant: 'error' })
         } else if (!validateRoomCode()) {
             enqueueSnackbar('Preencha um código da sala válido', { variant: 'error' })
+        } else {
+            emitJoinRoom()
         }
     }
 

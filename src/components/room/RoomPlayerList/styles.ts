@@ -3,7 +3,8 @@ import { RoomPlayerListProps } from '.';
 
 export const useStyles = makeStyles((theme) => ({
   root: (props: RoomPlayerListProps) =>  ({
-    paddingRight: theme.spacing(9),
+    paddingRight: theme.spacing(3),
+    minWidth: 250,
     overflowY: 'scroll',
 
     ...!props.ranking && {

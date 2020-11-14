@@ -1,10 +1,25 @@
 import { Box, Button, TextField, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import Marker from '../../common/Marker';
-import { useStyles } from './styles'
+import { useStyles } from './styles';
+import { useSnackbar } from 'notistack';
 
 function RoomAnswer() {
     const classes = useStyles();
+    const [answer, setAnswer] = useState('');
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    function handleSetAnswer(e: React.ChangeEvent<HTMLInputElement>) {
+        setAnswer(e.target.value);
+    }
+
+    function handleSubmitAnswer(e: React.FormEvent) {
+        e.preventDefault();
+        if (!answer) {
+            enqueueSnackbar('Você não pode enviar um palpite em branco.', { variant: 'error' })
+        }
+    }
+
 
     return <section className={classes.root}>
         <Box mb={2}>
@@ -37,14 +52,16 @@ function RoomAnswer() {
         </Typography>
         </Box>
 
-        <Box mb={3}>
-            <TextField type="number" fullWidth variant="outlined" />
-        </Box>
+        <form onSubmit={handleSubmitAnswer}>
+            <Box mb={3}>
+                <TextField value={answer} onChange={handleSetAnswer} type="number" fullWidth variant="outlined" />
+            </Box>
 
 
-        <Button fullWidth variant="contained" color="primary">
-            Enviar palpite
+            <Button fullWidth variant="contained" color="primary" type="submit">
+                Enviar palpite
         </Button>
+        </form>
     </section>
 }
 

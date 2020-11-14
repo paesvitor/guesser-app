@@ -6,10 +6,12 @@ import { useStyles } from './styles'
 export interface RoomPlayerCardProps {
     ready: boolean,
     avatar: number;
+    name: string;
+    score: number;
 }
 
 function RoomPlayerCard(props: RoomPlayerCardProps) {
-    const { avatar } = props;
+    const { avatar, name, score } = props;
 
     const classes = useStyles(props);
 
@@ -17,8 +19,8 @@ function RoomPlayerCard(props: RoomPlayerCardProps) {
         <img className={classes.image} src={`/avatars/${avatar}.png`} />
 
         <Box ml={2}>
-            <div className={classes.playerName}>Player name</div>
-            <div className={classes.playerPoints}>Player points</div>
+            <div className={classes.playerName}>{name}</div>
+            <div className={classes.playerPoints}>{`${score} pontos`}</div>
         </Box>
     </section>
 }

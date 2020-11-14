@@ -1,5 +1,6 @@
 import { Box, Divider, Typography } from '@material-ui/core'
 import React from 'react'
+import { useSelector } from '../../../utils/hooks/useSelector';
 import RoomPlayerCard from '../RoomPlayerCard'
 import { useStyles } from './styles';
 
@@ -10,15 +11,16 @@ export interface RoomPlayerListProps {
 function RoomPlayerList(props: RoomPlayerListProps) {
     const { ranking } = props;
     const classes = useStyles(props);
+    const roomPlayers = useSelector(state => state.room.players)
 
     function renderPlayerCards() {
-        return [Array(16).fill(0).map((_, i) => <RoomPlayerCard avatar={i + 1} ready={true} />)]
+        return roomPlayers.map((player) => <RoomPlayerCard name={player.name} score={player.score} avatar={player.avatar} ready={true} />)
     }
 
     return <Box className={classes.root}>
         {!ranking && <Box mb={3}>
             <Typography variant="h3">
-                Jogadores 7/8
+                {`Jogadores ${roomPlayers.length}/12`}
             </Typography>
         </Box>}
 

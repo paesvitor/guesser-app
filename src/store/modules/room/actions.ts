@@ -1,5 +1,7 @@
 import { action } from "typesafe-actions";
+import { RoomActionTypes } from './types'
 
 export const roomActions = {
-    action: () => action('ACTION_DISPATCH_TEST')
+    closeRoundHund: () => action(RoomActionTypes.closeRoundHunch),
+    openRoundHund: () => action(RoomActionTypes.openRoundHunch)
 }

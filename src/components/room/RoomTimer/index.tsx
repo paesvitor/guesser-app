@@ -1,10 +1,27 @@
 import { Box, Container, LinearProgress, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStyles } from './styles'
-
+import Countdown from 'react-countdown';
 
 function RoomTimer() {
     const classes = useStyles();
+    const [timeLeft, setTimeLeft] = useState(0);
+    const roundSeconds = 30000
+
+    useEffect(() => {
+        console.log(Date.now())
+    }, []);
+
+    const renderer = ({ hours, minutes, seconds, completed }) => {
+        const percentage = (seconds * 100) / (roundSeconds / 1000)
+
+        if (completed) {
+            // Render a completed state
+            return <div>tempo esgotado</div>;
+        } else {
+            return <LinearProgress className={classes.timer} value={percentage} variant="determinate" />
+        }
+    };
 
     return <Box pt={2}>
         <Typography align="center">
@@ -18,7 +35,11 @@ function RoomTimer() {
         </Box>
 
         <Box mb={3}>
-            <LinearProgress className={classes.timer} value={10} variant="determinate" />
+            <Countdown
+                onComplete={() => console.log('acabout o ste')}
+                date={Date.now() + roundSeconds}
+                renderer={renderer}
+            />
         </Box>
     </Box>
 }

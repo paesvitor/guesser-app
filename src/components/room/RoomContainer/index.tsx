@@ -11,6 +11,11 @@ import { useStyles } from './styles'
 function RoomContainer() {
     const classes = useStyles();
 
+
+    function buildRoomState() {
+
+    }
+
     return <Box className={classes.root}>
         <RoomTimer />
 
