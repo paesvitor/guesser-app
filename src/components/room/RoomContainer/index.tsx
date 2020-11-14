@@ -3,6 +3,7 @@ import React from 'react'
 import RoomAnswer from '../RoomAnswer';
 import RoomAnswerOverview from '../RoomAnswerOverview';
 import RoomControl from '../RoomControl';
+import { RoomEndGame } from '../RoomEndGame';
 import RoomPlayerList from '../RoomPlayerList'
 import RoomTimer from '../RoomTimer';
 import { useStyles } from './styles'
@@ -10,16 +11,17 @@ import { useStyles } from './styles'
 function RoomContainer() {
     const classes = useStyles();
 
-    return <Box flex={1} display="flex" flexDirection="column" pt={2} height="100%" overflow="hidden">
+    return <Box className={classes.root}>
         <RoomTimer />
 
         <Box display="flex" flex={1} overflow="hidden ">
             <RoomPlayerList />
 
             <section className={classes.gameWrapper}>
-                <RoomAnswer />
+                {/* <RoomAnswer /> */}
                 {/* <RoomControl /> */}
                 {/* <RoomAnswerOverview /> */}
+                <RoomEndGame />
             </section>
         </Box>
     </Box>

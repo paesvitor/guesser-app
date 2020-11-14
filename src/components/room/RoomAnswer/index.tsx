@@ -31,6 +31,12 @@ function RoomAnswer() {
             </Marker>
         </Box>
 
+        <Box mb={2}>
+            <Typography variant="h3">
+                Seu palpite
+        </Typography>
+        </Box>
+
         <Box mb={3}>
             <TextField type="number" fullWidth variant="outlined" />
         </Box>

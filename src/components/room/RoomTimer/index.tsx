@@ -6,7 +6,7 @@ import { useStyles } from './styles'
 function RoomTimer() {
     const classes = useStyles();
 
-    return <Box>
+    return <Box pt={2}>
         <Typography align="center">
             Rodada 6/10
         </Typography>

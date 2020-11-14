@@ -11,9 +11,11 @@ function RoomEndGame() {
         </Typography>
         </Box>
 
-        <Marker>
-            Cezinha 8094 pontos
-        </Marker>
+        <Box mb={3}>
+            <Marker>
+                Cezinha 8094 pontos
+            </Marker>
+        </Box>
 
         <Button color="primary" variant="contained" fullWidth>
             Novo jogo
@@ -22,14 +24,6 @@ function RoomEndGame() {
         <Box my={3}>
             <Divider />
         </Box>
-
-        <Box mb={3}>
-            <Typography variant="h3">
-                Placar final
-            </Typography>
-        </Box>
-
-        <RoomPlayerList ranking />
     </Container>
 }
 
