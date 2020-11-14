@@ -10,9 +10,13 @@ export const useStyles = makeStyles((theme) => ({
 
   logoWrapper: {
       flex: 1,
-      fontSize: 16,
+      fontSize: 19,
       color: '#fff',
-      fontWeight: 900
+      fontWeight: 500,
+
+      '& span': {
+        fontWeight: 300
+      }
   },
 
   optionsWrapper: {

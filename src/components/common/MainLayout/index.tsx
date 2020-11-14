@@ -13,11 +13,11 @@ function MainLayout(props: MainLayoutProps) {
     const classes = useStyles();
 
     return <Container id="__main" className={classes.root}>
-        {navbar && <Box mt={2}>
-            <Navbar />
-        </Box>}
 
         {children}
+        {navbar && <Box my={2}>
+            <Navbar />
+        </Box>}
     </Container>
 }
 

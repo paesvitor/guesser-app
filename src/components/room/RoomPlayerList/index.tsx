@@ -18,7 +18,6 @@ function RoomPlayerList(props: RoomPlayerListProps) {
             </Typography>
         </Box>}
 
-
         <RoomPlayerCard ready={true} />
         <RoomPlayerCard ready={true} />
         <RoomPlayerCard ready={false} />

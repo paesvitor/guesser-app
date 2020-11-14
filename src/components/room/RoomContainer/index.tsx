@@ -10,7 +10,7 @@ import { useStyles } from './styles'
 function RoomContainer() {
     const classes = useStyles();
 
-    return <Box flex={1} display="flex" flexDirection="column" py={2} height="100%" overflow="hidden">
+    return <Box flex={1} display="flex" flexDirection="column" pt={2} height="100%" overflow="hidden">
         <RoomTimer />
 
         <Box display="flex" flex={1} overflow="hidden ">
