@@ -7,8 +7,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSocketIoMiddleware from 'redux-socket.io';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3000');
-const socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
+// const socket = io('http://localhost:3000');
+// const socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 const logger = createLogger();
 
@@ -31,7 +31,7 @@ const reducer = (state: any, action: any) => {
 
 // create a makeStore function
 export const makeStore: MakeStore<IAppRootState> = (context: Context) => {
-    const middlewares = [logger, socketIoMiddleware];
+    const middlewares = [logger];
 
     let appliedMiddlewares = applyMiddleware(...middlewares);
     if (process.env.NODE_ENV !== 'production') {

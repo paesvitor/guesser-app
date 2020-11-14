@@ -2,6 +2,6 @@
 
 
 // States
-export interface IRoomState {
+export interface IRoomRootState {
     test: 'asdasd'
 }

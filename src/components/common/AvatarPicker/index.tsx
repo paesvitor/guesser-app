@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useStyles } from './styles'
 import { Avatar as MuiAvatar, Box, Dialog, Grid, Modal, Typography } from '@material-ui/core'
+import { useSelector } from '../../../utils/hooks/useSelector';
+import { userActions } from '../../../store/modules/user/actions';
+import { useDispatch } from 'react-redux';
 
 export interface AvatarProps {
     size?: number;
@@ -10,10 +13,11 @@ export interface AvatarProps {
 function AvatarPicker(props: AvatarProps) {
     const classes = useStyles(props);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [selectedAvatar, setSelectedAvatar] = useState(1);
+    const userStoreState = useSelector(state => state.user);
+    const dispatch = useDispatch()
 
     function handleSelectAvatar(id: number) {
-        setSelectedAvatar(id);
+        dispatch(userActions.setAvatar(id))
         setModalIsOpen(false)
     }
 
@@ -34,7 +38,7 @@ function AvatarPicker(props: AvatarProps) {
     }
 
     return <Box>
-        <img className={classes.avatar} src={`/avatars/${selectedAvatar}.png`} onClick={handleOpenModal} />
+        <img className={classes.avatar} src={`/avatars/${userStoreState.avatar}.png`} onClick={handleOpenModal} />
 
         <Dialog open={modalIsOpen} onClose={handleCloseModal}>
             <Box p={6}>

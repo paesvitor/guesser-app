@@ -4,11 +4,14 @@ import type { AppProps /*, AppContext */ } from 'next/app'
 import theme from '../src/theme'
 import { Provider as StoreProvider } from 'react-redux'
 import { wrapper } from '../src/store'
+import { SnackbarProvider } from 'notistack';
 
 function App({ Component, pageProps }: AppProps) {
   return <ThemeProvider theme={theme}>
     <CssBaseline>
-      <Component {...pageProps} />
+      <SnackbarProvider>
+        <Component {...pageProps} />
+      </SnackbarProvider>
     </CssBaseline>
   </ThemeProvider>
 }
