@@ -6,10 +6,12 @@ interface AppButtonProps extends MuiButtonProps {
 }
 
 function Button(props: AppButtonProps) {
-    return <MuiButton {...props}>
-        {props.loading ? <Box width="100%" pt={1}>
+    const { loading, children, ...rest } = props;
+
+    return <MuiButton {...rest}>
+        {loading ? <Box width="100%" pt={1}>
             <CircularProgress size={24} color="secondary" />
-        </Box> : props.children}
+        </Box> : children}
     </MuiButton>
 }
 
