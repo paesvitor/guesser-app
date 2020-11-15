@@ -40,7 +40,7 @@ const INITIAL_STATE: IRoomRootState = {
           },
 
           {
-              name: 'Cezinha 3',
+              name: 'Cezinha 4',
               avatar: 12,
               ready: false,
               score: 1231245

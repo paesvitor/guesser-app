@@ -9,7 +9,7 @@ import { SnackbarProvider } from 'notistack';
 function App({ Component, pageProps }: AppProps) {
   return <ThemeProvider theme={theme}>
     <CssBaseline>
-      <SnackbarProvider>
+      <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Component {...pageProps} />
       </SnackbarProvider>
     </CssBaseline>

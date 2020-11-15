@@ -13,11 +13,11 @@ function RoomTimer() {
     }, []);
 
     const renderer = ({ hours, minutes, seconds, completed }) => {
-        const percentage = (seconds * 100) / (roundSeconds / 1000)
+        const percentage = (seconds * 100) / (roundSeconds / 1000);
 
         if (completed) {
             // Render a completed state
-            return <div>tempo esgotado</div>;
+            return <Box height={21} />
         } else {
             return <LinearProgress className={classes.timer} value={percentage} variant="determinate" />
         }
@@ -30,7 +30,7 @@ function RoomTimer() {
 
         <Box mb={1}>
             <Typography variant="h4" align="center">
-                Tempo restante
+                {timeLeft === 0 ? 'Aguardando jogadores para próxima rodada' : 'Tempo restante'}
             </Typography>
         </Box>
 

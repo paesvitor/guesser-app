@@ -14,13 +14,13 @@ function RoomPlayerList(props: RoomPlayerListProps) {
     const roomPlayers = useSelector(state => state.room.players)
 
     function renderPlayerCards() {
-        return roomPlayers.map((player) => <RoomPlayerCard name={player.name} score={player.score} avatar={player.avatar} ready={true} />)
+        return roomPlayers.map((player) => <RoomPlayerCard key={player.name} name={player.name} score={player.score} avatar={player.avatar} ready={true} />)
     }
 
     return <Box className={classes.root}>
         {!ranking && <Box mb={3}>
-            <Typography variant="h3">
-                {`Jogadores ${roomPlayers.length}/12`}
+            <Typography variant="h3" className={classes.title}>
+                Jogadores <span>{`${roomPlayers.length}/12`}</span>
             </Typography>
         </Box>}
 
