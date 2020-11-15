@@ -6,7 +6,8 @@ interface MainLayoutStyleProps {
 
 export const useStyles = makeStyles({
   root: (props: MainLayoutStyleProps) => ({
-    backgroundColor: props.backgroundColor
+    backgroundColor: props.backgroundColor,
+    position: 'relative'
   }),
 
   container: {
@@ -14,6 +15,17 @@ export const useStyles = makeStyles({
     flexDirection: 'column',
     height: '100vh',
     overflowY: 'hidden',
+    zIndex: 1
+  },
+
+  pattern: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.2,
+    width: '100%',
+    height: '100%',
+    zIndex: 0
   },
 
   '@global': {

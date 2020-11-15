@@ -6,32 +6,30 @@ import { uiActions } from '../../../store/modules/ui/actions';
 import { useSelector } from '../../../utils/hooks/useSelector';
 import { useStyles } from './styles';
 
-const colors = [
-    '#a29bfe',
-    '#fd79a8',
-    '#ff7675',
-    '#ffeaa7',
-    '#fab1a0',
-    '#fff'
-];
+const patterns = [
+    'jigsaw',
+    'food',
+    'tic',
+    'waves',
+    'floor'
+]
 
-function ColorPicker() {
-    const backgroundColor = useSelector(state => state.ui.backgroundColor)
-    const classes = useStyles({ backgroundColor });
+function PatternPicker() {
+    const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const dispatch = useDispatch();
+    const appBackgroundColor = useSelector(state => state.ui.backgroundColor)
 
     const handleOpenPicker = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
-        // dispatch(uiActions.setAppBackgroundColor('red'))
     };
 
     const handleClose = () => {
         setAnchorEl(null);
     };
 
-    function handlePickColor(color: string) {
-        dispatch(uiActions.setAppBackgroundColor(color));
+    function handlePickPattern(pattern: string) {
+        dispatch(uiActions.setAppBackgroundImage(pattern));
         handleClose()
     }
 
@@ -47,12 +45,13 @@ function ColorPicker() {
             onClose={handleClose}
         >
 
-            {colors.map(color => <MenuItem key={color} onClick={() => handlePickColor(color)}>
+            {patterns.map(pattern => <MenuItem key={pattern} onClick={() => handlePickPattern(pattern)}>
                 <IconButton>
-                    <section className={classes.color} style={{ backgroundColor: color }} />
-                </IconButton></MenuItem>)}
+                    <section className={clsx(classes.color, classes.patternOnPicker)} style={{ backgroundColor: appBackgroundColor, backgroundImage: `url("/patterns/${pattern}.svg")` }} />
+                </IconButton>
+            </MenuItem>)}
         </Menu>
     </section>
 }
 
-export default ColorPicker
+export default PatternPicker

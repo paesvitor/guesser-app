@@ -12,13 +12,13 @@ interface MainLayoutProps {
 function MainLayout(props: MainLayoutProps) {
     const { children, navbar = true } = props;
     const uiStoreState = useSelector(state => state.ui);
-    const { backgroundColor } = uiStoreState;
+    const { backgroundColor, backgroundImage } = uiStoreState;
 
     console.log(backgroundColor)
 
     const classes = useStyles({ backgroundColor });
 
-    return <section className={classes.root}>
+    return <section className={classes.root} style={{ backgroundImage: `url("/patterns/${backgroundImage}.svg")` }}>
         <Container id="__main" className={classes.container}>
 
             {children}

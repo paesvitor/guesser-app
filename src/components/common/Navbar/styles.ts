@@ -5,7 +5,8 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     backgroundColor: 'rgb(0 0 0 / 25%)',
     padding: theme.spacing(1),
-    borderRadius: 6
+    borderRadius: 6,
+    alignItems: 'center'
   },
 
   logoWrapper: {
@@ -20,7 +21,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   optionsWrapper: {
-
+    display: 'flex'
   }
 }));
 

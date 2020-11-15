@@ -1,6 +1,7 @@
 import { Box, Button, Menu, MenuItem, TextField, Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import ColorPicker from '../ColorPicker';
+import PatternPicker from '../PatternPicker';
 import { useStyles } from './styles';
 
 interface NavbarProps {
@@ -25,6 +26,7 @@ function Navbar(props: NavbarProps) {
 
         <section className={classes.optionsWrapper}>
             <ColorPicker />
+            <PatternPicker />
         </section>
     </section>
 }

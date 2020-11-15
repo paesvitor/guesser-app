@@ -8,6 +8,8 @@ import { AvatarPicker } from '../AvatarPicker'
 import { Button } from '../Button'
 import { useSnackbar } from 'notistack';
 import { Logo } from '../Logo'
+import ColorPicker from '../ColorPicker'
+import PatternPicker from '../PatternPicker'
 
 function Signin() {
     const router = useRouter();
@@ -89,6 +91,11 @@ function Signin() {
                 <Button loading={loading} onClick={handleCreateRoom} variant="contained" color="primary">
                     Criar sala
                 </Button>
+
+                <Box mt={3} justifyContent="center" display="flex">
+                    <ColorPicker />
+                    <PatternPicker />
+                </Box>
             </Box>
         </Container>
     </Box >
