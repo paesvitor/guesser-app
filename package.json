@@ -13,6 +13,7 @@
     "@material-ui/icons": "^4.9.1",
     "@types/node": "^14.14.7",
     "@types/react": "^16.9.56",
+    "clsx": "^1.1.1",
     "next": "10.0.1",
     "next-on-netlify": "^2.6.0",
     "next-redux-wrapper": "^6.0.2",

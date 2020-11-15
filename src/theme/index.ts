@@ -16,7 +16,7 @@ const defaultTheme = createMuiTheme({
       main: red.A400,
     },
     background: {
-      default: '#FAFE4E',
+      // default: '#FAFE4E',
     },
   },
 
@@ -112,13 +112,13 @@ const defaultTheme = createMuiTheme({
       }
     },
 
-    MuiCssBaseline: {
-      '@global': {
-        html: {
-          backgroundColor: '#FAFE4E',
-        },
-      },
-    },
+    // MuiCssBaseline: {
+    //   '@global': {
+    //     html: {
+    //       backgroundColor: '#FAFE4E',
+    //     },
+    //   },
+    // },
   },
 });
 

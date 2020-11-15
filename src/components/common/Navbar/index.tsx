@@ -24,7 +24,7 @@ function Navbar(props: NavbarProps) {
         </section>
 
         <section className={classes.optionsWrapper}>
-            {/* <ColorPicker /> */}
+            <ColorPicker />
         </section>
     </section>
 }

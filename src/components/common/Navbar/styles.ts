@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     backgroundColor: 'rgb(0 0 0 / 25%)',
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     borderRadius: 6
   },
 
