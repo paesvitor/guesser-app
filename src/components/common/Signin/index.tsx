@@ -1,4 +1,4 @@
-import { Box, Button, Container, Divider, TextField } from '@material-ui/core'
+import { Box, Button, CircularProgress, Container, Divider, LinearProgress, TextField } from '@material-ui/core'
 import React from 'react'
 import { Logo } from '../Logo'
 
@@ -27,7 +27,9 @@ function Signin() {
                 </Box>
 
                 <Button variant="contained" color="primary">
-                    Criar sala
+                    <Box width="100%" pt={1}>
+                        <CircularProgress size={24} color="secondary" />
+                    </Box>
                 </Button>
             </Box>
         </Container>

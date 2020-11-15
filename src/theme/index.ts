@@ -53,13 +53,19 @@ const defaultTheme = createMuiTheme({
    },
 
     "MuiOutlinedInput": {
-      focused: {
-        borderWidth: 4
+      root: {
+        "&$focused": {
+          "borderWidth": 4
+        }
       },
 
       notchedOutline: {
         borderWidth: 4,
-        borderColor: '#000'
+        borderColor: '#000',
+
+        "&$focused": {
+          "borderWidth": 4
+        }
       },
     },
 
@@ -74,7 +80,22 @@ const defaultTheme = createMuiTheme({
     // Typography
     MuiTypography: {
       h1: {
+        fontSize: 42,
+        fontWeight: 900
+      },
+
+      h2: {
         fontSize: 60,
+        fontWeight: 900
+      },
+
+      h3: {
+        fontSize: 24,
+        fontWeight: 900
+      },
+
+      h4: {
+        fontSize: 21,
         fontWeight: 900
       }
     },
@@ -93,12 +114,7 @@ const defaultTheme = createMuiTheme({
       '@global': {
         html: {
           backgroundColor: '#FAFE4E',
-          height: '100%'
         },
-
-        'body, #__next, #__main': {
-          height: '100%',
-        }
       },
     },
   },
