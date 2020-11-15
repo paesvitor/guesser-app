@@ -11,7 +11,7 @@ export const useStyles = makeStyles((theme) => ({
     background: 'rgb(0 0 0 / 19%)',
     borderRadius: 6,
     fontSize: 27,
-    fontWeight: 700
+    fontWeight: 900
   }
 }));
 
