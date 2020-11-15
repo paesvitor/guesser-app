@@ -38,6 +38,8 @@ function Signin() {
             enqueueSnackbar('Preencha um nome antes de entrar na sala', { variant: 'error' })
         } else if (!validateRoomCode()) {
             enqueueSnackbar('Preencha um código da sala válido', { variant: 'error' })
+        } else if (userStoreState.name.length > 12) {
+            enqueueSnackbar('Nome muito longo, o máximo de caracteres permitido é 12.', { variant: 'error' })
         } else {
             emitJoinRoom()
         }

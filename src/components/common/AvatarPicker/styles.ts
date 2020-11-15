@@ -12,5 +12,11 @@ export const useStyles = makeStyles(theme => ({
       transition: '.2s opacity'
     }
   }),
+
+  editIconWrapper: {
+    backgroundColor: 'rgb(0 0 0 / 34%)',
+    borderRadius: '50%',
+    padding: 4
+  }
 }));
 

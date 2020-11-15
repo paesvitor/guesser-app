@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useStyles } from './styles'
-import { Avatar as MuiAvatar, Box, Dialog, Grid, Modal, Typography } from '@material-ui/core'
+import { Avatar as MuiAvatar, Badge, Box, Dialog, Grid, Modal, Typography } from '@material-ui/core'
 import { useSelector } from '../../../utils/hooks/useSelector';
 import { userActions } from '../../../store/modules/user/actions';
 import { useDispatch } from 'react-redux';
+import EditIcon from '@material-ui/icons/Edit'
 
 export interface AvatarProps {
     size?: number;
@@ -38,7 +39,18 @@ function AvatarPicker(props: AvatarProps) {
     }
 
     return <Box>
-        <img className={classes.avatar} src={`/avatars/${userStoreState.avatar}.png`} onClick={handleOpenModal} />
+
+        <Badge
+            overlap="circle"
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+            }}
+        // badgeContent={<section className={classes.editIconWrapper}><EditIcon /></section>}
+        >
+            <img className={classes.avatar} src={`/avatars/${userStoreState.avatar}.png`} onClick={handleOpenModal} />
+        </Badge>
+
 
         <Dialog open={modalIsOpen} onClose={handleCloseModal}>
             <Box p={6}>
