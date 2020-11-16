@@ -2,11 +2,11 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 import { UserActionTypes } from './types';
 import { userActions } from './actions';
-import firebase from 'firebase'
+import { firebaseApp } from '../../../utils/firebase/config';
 
 function* auth(action: ActionType<typeof userActions.auth>) {
     try {
-        yield firebase.auth().signInAnonymously();
+        yield firebaseApp.auth().signInAnonymously();
     } catch (error) {
        yield console.log(error)
     }

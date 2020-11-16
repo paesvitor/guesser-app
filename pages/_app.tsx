@@ -1,13 +1,9 @@
-
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import type { AppContext, AppProps /*, AppContext */ } from 'next/app'
 import theme from '../src/theme'
 import { Provider as StoreProvider, useDispatch } from 'react-redux'
 import { SagaStore, wrapper } from '../src/store'
 import { SnackbarProvider } from 'notistack';
-import { FirebaseDatabaseProvider } from "@react-firebase/database";
-import firebase from 'firebase/app'
-import { firebaseConfig } from '../src/utils/firebase/config'
 import { END } from 'redux-saga';
 import { userActions } from '../src/store/modules/user/actions'
 import { useEffect } from 'react'
@@ -21,9 +17,7 @@ function App({ Component, pageProps }: AppProps) {
   return <ThemeProvider theme={theme}>
     <CssBaseline>
       <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <FirebaseDatabaseProvider firebase={firebase} {...firebaseConfig}>
-          <Component {...pageProps} />
-        </FirebaseDatabaseProvider>
+        <Component {...pageProps} />
       </SnackbarProvider>
     </CssBaseline>
   </ThemeProvider>

@@ -57,10 +57,9 @@ function RoomAnswer() {
                 <TextField value={answer} onChange={handleSetAnswer} type="number" fullWidth variant="outlined" />
             </Box>
 
-
             <Button fullWidth variant="contained" color="primary" type="submit">
                 Enviar palpite
-        </Button>
+            </Button>
         </form>
     </section>
 }

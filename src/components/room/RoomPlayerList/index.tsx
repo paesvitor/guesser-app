@@ -10,10 +10,10 @@ export interface RoomPlayerListProps {
 function RoomPlayerList(props: RoomPlayerListProps) {
     const { ranking } = props;
     const classes = useStyles(props);
-    const roomPlayers = useSelector(state => state.room.players);
+    const roomPlayers = useSelector(state => state.room.data.scoreboard);
 
     function renderPlayerCards() {
-        return roomPlayers.map((player) => <RoomPlayerCard key={player.name} name={player.name} score={player.score} avatar={player.avatar} ready={true} />)
+        return roomPlayers.map((player) => <RoomPlayerCard key={player.user.name} name={player.user.name} score={player.score} avatar={player.user.avatar} ready={true} />)
     }
 
     return <Box className={classes.root}>

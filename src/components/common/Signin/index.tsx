@@ -11,15 +11,18 @@ import { Logo } from '../Logo'
 import ColorPicker from '../ColorPicker'
 import PatternPicker from '../PatternPicker'
 import firebase from 'firebase'
+import { useReduxAction } from '../../../utils/hooks/useReduxAction'
+import { RoomActionTypes } from '../../../store/modules/room/types'
+import { roomActions } from '../../../store/modules/room/actions'
 
 function Signin() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const userStoreState = useSelector(state => state.user);
+    const roomStoreState = useSelector(state => state.room);
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [roomCode, setRoomCode] = useState('');
-    const ref = firebase.database().ref("rooms");
 
     function validateRoomCode() {
         if (!roomCode) {
@@ -60,6 +63,9 @@ function Signin() {
     }
 
     async function handleCreateRoom() {
+        if (validateCanCreateOrJoinRoom()) {
+            dispatch(roomActions.requestCreate())
+        }
     }
 
     function handleChangeUsername(username: string) {
@@ -69,6 +75,10 @@ function Signin() {
     function handleChangeRoomCode(value: string) {
         setRoomCode(value)
     }
+
+    // useReduxAction(() => {
+    //     router.push(`/room/${roomStoreState.data.room.code}`)
+    // }, RoomActionTypes.create.success, [])
 
     return <Box height="100%" display="flex" flexDirection="column" justifyContent="center">
         <Box mb={6}>
@@ -99,7 +109,7 @@ function Signin() {
                     <Divider />
                 </Box>
 
-                <Button loading={loading} onClick={handleCreateRoom} variant="contained" color="primary">
+                <Button loading={roomStoreState.loading} onClick={handleCreateRoom} variant="contained" color="primary">
                     Criar sala
                 </Button>
 
