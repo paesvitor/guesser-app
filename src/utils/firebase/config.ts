@@ -1,10 +1,10 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyCdJlL8fhO10-AIBdh4pYe_PHCxqR9z4BQ",
-    authDomain: "name-game-api.firebaseapp.com",
-    databaseURL: "https://name-game-api.firebaseio.com",
-    projectId: "name-game-api",
-    storageBucket: "name-game-api.appspot.com",
-    messagingSenderId: "446349103807",
-    appId: "1:446349103807:web:8bd6fede395c198cb62c0a",
-    measurementId: "G-PRP9W33TBN"
+  apiKey: "AIzaSyAfPvjypdZCIo2d3uazSGR17O4K3Aj0Mbc",
+  authDomain: "namegame-b1267.firebaseapp.com",
+  databaseURL: "https://namegame-b1267.firebaseio.com",
+  projectId: "namegame-b1267",
+  storageBucket: "namegame-b1267.appspot.com",
+  messagingSenderId: "68521292906",
+  appId: "1:68521292906:web:071fee9a73f2d8383b4613",
+  measurementId: "G-V7TP0ZY2FB"
   };

@@ -4,11 +4,11 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './rootReducer';
 import { IAppRootState } from './rootTypes';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSocketIoMiddleware from 'redux-socket.io';
-import { io } from 'socket.io-client';
-
-// const socket = io('http://localhost:3000');
-// const socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
+import createSagaMiddleware, { Task } from 'redux-saga';
+import rootSagas from './rootSagas';
+export interface SagaStore extends Store {
+    sagaTask: Task;
+}
 
 const logger = createLogger();
 
@@ -31,7 +31,8 @@ const reducer = (state: any, action: any) => {
 
 // create a makeStore function
 export const makeStore: MakeStore<IAppRootState> = (context: Context) => {
-    const middlewares = [logger];
+    const sagaMiddleware = createSagaMiddleware();
+    const middlewares = [logger, sagaMiddleware];
 
     let appliedMiddlewares = applyMiddleware(...middlewares);
     if (process.env.NODE_ENV !== 'production') {
@@ -39,6 +40,8 @@ export const makeStore: MakeStore<IAppRootState> = (context: Context) => {
     }
 
     const store = createStore(reducer, appliedMiddlewares);
+
+    (store as SagaStore).sagaTask = sagaMiddleware.run(rootSagas);
 
     return store;
 };

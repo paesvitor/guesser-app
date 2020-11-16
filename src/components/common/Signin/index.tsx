@@ -31,21 +31,6 @@ function Signin() {
 
     function emitJoinRoom() {
         // router.push('/room/3901')
-
-        ref.child(roomCode).once('value', snapshot => {
-            if (snapshot.exists()) {
-                ref.child(`${roomCode}/players`).push({
-                    avatar: userStoreState.avatar,
-                    name: userStoreState.name,
-                    ready: false,
-                    score: 0
-                }).then(() => {
-                    router.push(`/room/${roomCode}`)
-                })
-            } else {
-                enqueueSnackbar('Essa sala não existe', { variant: 'error' })
-            }
-        })
     }
 
     function handleJoinRoom(e: React.FormEvent) {
@@ -75,32 +60,6 @@ function Signin() {
     }
 
     async function handleCreateRoom() {
-        setLoading(true);
-        try {
-            if (!validateCanCreateOrJoinRoom()) {
-                throw new Error()
-            }
-
-            const room = {
-                owner: userStoreState.name,
-                players: [
-                    {
-                        name: userStoreState.name,
-                        score: 0,
-                        ready: false,
-                        avatar: userStoreState.avatar
-                    }
-                ]
-            }
-
-            const snapshot = await ref.push(room);
-            router.push(`/room/${snapshot.key}`)
-
-        } catch (error) {
-            console.log('error')
-        } finally {
-            setLoading(false)
-        }
     }
 
     function handleChangeUsername(username: string) {

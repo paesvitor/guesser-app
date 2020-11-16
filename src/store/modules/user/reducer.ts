@@ -5,7 +5,8 @@ import { UserActionTypes, IUserRootState } from './types';
 
 const INITIAL_STATE: IUserRootState = {
     avatar: 1,
-    name: ''
+    name: '',
+    FCM_USER_TOKEN: null
 };
 
 const reducer: Reducer<
