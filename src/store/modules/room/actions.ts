@@ -3,5 +3,6 @@ import { RoomActionTypes } from './types'
 
 export const roomActions = {
     closeRoundHund: () => action(RoomActionTypes.closeRoundHunch),
-    openRoundHund: () => action(RoomActionTypes.openRoundHunch)
+    openRoundHund: () => action(RoomActionTypes.openRoundHunch),
+    setRoom: (room: any) => action(RoomActionTypes.setRoom, { room })
 }

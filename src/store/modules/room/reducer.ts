@@ -4,48 +4,20 @@ import { roomActions } from './actions';
 import { RoomActionTypes, IRoomRootState } from './types';
 
 const INITIAL_STATE: IRoomRootState = {
-      code: 3903,
-      canSendHunch: true,
-      round: {
-          current: 2,
-          max: 10,
-          endsAt: Date.now() + 30000,
-          question: {
-              category: 'Nomes do Brasil',
-              value: 'Quantas pessoas possuem o nome Flávio no Brasil?',
-              answer: 34300
-          }
-      },
+      id: null,
+      owner: null,
+    //   round: {
+    //       current: 2,
+    //       max: 10,
+    //       endsAt: Date.now() + 30000,
+    //       question: {
+    //           category: 'Nomes do Brasil',
+    //           value: 'Quantas pessoas possuem o nome Flávio no Brasil?',
+    //           answer: 34300
+    //       }
+    //   },
 
-      players: [
-          {
-              name: 'Cezinha',
-              avatar: 2,
-              ready: false,
-              score: 3545
-          },
-
-          {
-              name: 'Cezinha 2',
-              avatar: 3,
-              ready: false,
-              score: 3432
-          },
-
-          {
-              name: 'Cezinhaaaaa 3',
-              avatar: 5,
-              ready: false,
-              score: 304903
-          },
-
-          {
-              name: 'Cezinha 4',
-              avatar: 12,
-              ready: false,
-              score: 1231245
-          }
-      ]
+      players: []
 };
 
 const reducer: Reducer<
@@ -58,7 +30,10 @@ const reducer: Reducer<
                 avatar: action.payload.avatarId
             };
 
-          
+            case RoomActionTypes.setRoom:
+                return {
+                    ...action.payload.room
+                };
         default:
             return state;
     }

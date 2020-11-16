@@ -5,12 +5,17 @@ import theme from '../src/theme'
 import { Provider as StoreProvider } from 'react-redux'
 import { wrapper } from '../src/store'
 import { SnackbarProvider } from 'notistack';
+import { FirebaseDatabaseProvider } from "@react-firebase/database";
+import firebase from 'firebase/app'
+import { firebaseConfig } from '../src/utils/firebase/config'
 
 function App({ Component, pageProps }: AppProps) {
   return <ThemeProvider theme={theme}>
     <CssBaseline>
       <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <Component {...pageProps} />
+        <FirebaseDatabaseProvider firebase={firebase} {...firebaseConfig}>
+          <Component {...pageProps} />
+        </FirebaseDatabaseProvider>
       </SnackbarProvider>
     </CssBaseline>
   </ThemeProvider>

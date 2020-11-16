@@ -10,6 +10,7 @@ import { useSnackbar } from 'notistack';
 import { Logo } from '../Logo'
 import ColorPicker from '../ColorPicker'
 import PatternPicker from '../PatternPicker'
+import firebase from 'firebase'
 
 function Signin() {
     const router = useRouter();
@@ -18,9 +19,10 @@ function Signin() {
     const userStoreState = useSelector(state => state.user);
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [roomCode, setRoomCode] = useState('');
+    const ref = firebase.database().ref("rooms");
 
     function validateRoomCode() {
-        if (roomCode.length > 4 || roomCode.length < 4 || !roomCode) {
+        if (!roomCode) {
             return false;
         }
 
@@ -28,7 +30,22 @@ function Signin() {
     }
 
     function emitJoinRoom() {
-        router.push('/room/3901')
+        // router.push('/room/3901')
+
+        ref.child(roomCode).once('value', snapshot => {
+            if (snapshot.exists()) {
+                ref.child(`${roomCode}/players`).push({
+                    avatar: userStoreState.avatar,
+                    name: userStoreState.name,
+                    ready: false,
+                    score: 0
+                }).then(() => {
+                    router.push(`/room/${roomCode}`)
+                })
+            } else {
+                enqueueSnackbar('Essa sala não existe', { variant: 'error' })
+            }
+        })
     }
 
     function handleJoinRoom(e: React.FormEvent) {
@@ -45,12 +62,45 @@ function Signin() {
         }
     }
 
-    function handleCreateRoom() {
+    function validateCanCreateOrJoinRoom() {
+        if (!userStoreState.name) {
+            enqueueSnackbar('Preencha um nome antes de entrar na sala', { variant: 'error' });
+            return false;
+        } else if (userStoreState.name.length > 12) {
+            enqueueSnackbar('Nome muito longo, o máximo de caracteres permitido é 12.', { variant: 'error' });
+            return false;
+        } else {
+            return true
+        }
+    }
+
+    async function handleCreateRoom() {
         setLoading(true);
-        // socket.emit('ROOM_CREATE', { name: 'username' });
-        // socket.on('ROOM_STATE', (payload) => {
-        //     router.push(`/room/${payload.code}`)
-        // })
+        try {
+            if (!validateCanCreateOrJoinRoom()) {
+                throw new Error()
+            }
+
+            const room = {
+                owner: userStoreState.name,
+                players: [
+                    {
+                        name: userStoreState.name,
+                        score: 0,
+                        ready: false,
+                        avatar: userStoreState.avatar
+                    }
+                ]
+            }
+
+            const snapshot = await ref.push(room);
+            router.push(`/room/${snapshot.key}`)
+
+        } catch (error) {
+            console.log('error')
+        } finally {
+            setLoading(false)
+        }
     }
 
     function handleChangeUsername(username: string) {
@@ -78,7 +128,7 @@ function Signin() {
                     </Box>
 
                     <Box mb={3}>
-                        <TextField value={roomCode} type="number" fullWidth label="Código da sala" variant="outlined" onChange={e => handleChangeRoomCode(e.target.value)} />
+                        <TextField value={roomCode} fullWidth label="Código da sala" variant="outlined" onChange={e => handleChangeRoomCode(e.target.value)} />
                     </Box>
 
                     <Button fullWidth variant="contained" color="primary" type="submit">
