@@ -6,6 +6,12 @@ export const RoomActionTypes = {
     success: "@ROOM/JOIN/SUCCESS",
     failure: "@ROOM/JOIN/FAILURE",
   },
+
+  create: {
+    request: "@ROOM/CREATE/REQUEST",
+    success: "@ROOM/CREATE/SUCCESS",
+    failure: "@ROOM/CREATE/FAILURE",
+  },
 };
 
 export interface IPlayer {

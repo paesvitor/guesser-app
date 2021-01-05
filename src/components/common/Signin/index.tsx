@@ -16,7 +16,6 @@ import { notificationsActions } from "../../../store/modules/notifications/actio
 
 function Signin() {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const userStoreState = useSelector((state) => state.user);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -64,11 +63,7 @@ function Signin() {
   }
 
   function handleCreateRoom() {
-    setLoading(true);
-    // socket.emit('ROOM_CREATE', { name: 'username' });
-    // socket.on('ROOM_STATE', (payload) => {
-    //     router.push(`/room/${payload.code}`)
-    // })
+    dispatch(roomActions.create.request());
   }
 
   function handleChangeUsername(username: string) {
@@ -127,7 +122,7 @@ function Signin() {
           </Box>
 
           <Button
-            loading={loading}
+            loading={roomStoreState.loading}
             onClick={handleCreateRoom}
             variant="contained"
             color="primary"

@@ -10,4 +10,11 @@ export const roomActions = {
     success: (room: IRoomData) =>
       action(RoomActionTypes.join.success, { room }),
   },
+
+  create: {
+    request: () => action(RoomActionTypes.create.request),
+    failure: () => action(RoomActionTypes.create.request),
+    success: (room: IRoomData) =>
+      action(RoomActionTypes.create.request, { room }),
+  },
 };

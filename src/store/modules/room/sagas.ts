@@ -41,6 +41,39 @@ function* join(action: ActionType<typeof roomActions.join.request>) {
   }
 }
 
+function* create(action: ActionType<typeof roomActions.join.request>) {
+  try {
+    const player = yield select(userSelectors.getUser);
+
+    const response = yield api.post(`/rooms`, {
+      player: {
+        name: player.name,
+        avatar: player.avatar,
+      },
+    });
+
+    yield put({
+      type: RoomActionTypes.create.success,
+      payload: response.data.room,
+    });
+  } catch (error) {
+    yield put(
+      notificationsActions.enqueue({
+        message: error.response.data.error || "Erro ao criar sala",
+        options: {
+          variant: "error",
+        },
+      })
+    );
+
+    yield put({
+      type: RoomActionTypes.join.failure,
+      payload: "",
+    });
+  }
+}
+
 export default function* root() {
   yield takeLatest(RoomActionTypes.join.request, join);
+  yield takeLatest(RoomActionTypes.create.request, create);
 }

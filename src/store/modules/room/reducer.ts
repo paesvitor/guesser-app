@@ -4,7 +4,7 @@ import { roomActions } from "./actions";
 import { RoomActionTypes, IRoomRootState } from "./types";
 
 const INITIAL_STATE: Partial<IRoomRootState> = {
-  loading: true,
+  loading: false,
   error: false,
   data: null,
 };
@@ -15,6 +15,7 @@ const reducer: Reducer<typeof INITIAL_STATE> = (
 ) => {
   switch (action.type) {
     case RoomActionTypes.join.request:
+    case RoomActionTypes.create.request:
       return {
         ...state,
         loading: true,
@@ -22,6 +23,7 @@ const reducer: Reducer<typeof INITIAL_STATE> = (
       };
 
     case RoomActionTypes.join.success:
+    case RoomActionTypes.create.success:
       return {
         ...state,
         loading: false,
