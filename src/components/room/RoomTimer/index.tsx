@@ -56,17 +56,17 @@ function RoomTimer() {
   return (
     <Box pt={2}>
       <Typography align="center">{renderTopLabel()}</Typography>
-
+      {/* 
       <Box mb={1}>
         <Typography variant="h4" align="center">
           {timeLeft === 0
             ? "Aguardando jogadores para próxima rodada"
             : "Tempo restante"}
         </Typography>
-      </Box>
+      </Box> */}
 
       {/* <Box mb={1}>{renderTimeBar()}</Box> */}
-      <Box mb={4}></Box>
+      <Box mb={1}></Box>
     </Box>
   );
 }

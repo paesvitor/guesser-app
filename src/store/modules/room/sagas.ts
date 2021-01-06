@@ -169,6 +169,32 @@ function* restart(action: ActionType<typeof roomActions.restart>) {
   }
 }
 
+function* disconnect(
+  action: ActionType<typeof roomActions.disconnect.request>
+) {
+  try {
+    const player = yield select(userSelectors.getUser);
+    const code = yield select(roomSelectors.getRoomCode);
+
+    yield api.post(`/rooms/${code}/disconnect`, {
+      player: {
+        name: player.name,
+      },
+    });
+
+    yield put(roomActions.disconnect.success());
+  } catch (error) {
+    yield put(
+      notificationsActions.enqueue({
+        message: "Erro ao desconectar da partida",
+        options: {
+          variant: "error",
+        },
+      })
+    );
+  }
+}
+
 export default function* root() {
   yield takeLatest(RoomActionTypes.join.request, join);
   yield takeLatest(RoomActionTypes.create.request, create);
@@ -176,4 +202,5 @@ export default function* root() {
   yield takeLatest(RoomActionTypes.answer, answer);
   yield takeLatest(RoomActionTypes.finishRound, finishRound);
   yield takeLatest(RoomActionTypes.restart, restart);
+  yield takeLatest(RoomActionTypes.disconnect.request, disconnect);
 }

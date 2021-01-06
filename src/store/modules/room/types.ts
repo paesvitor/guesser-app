@@ -19,6 +19,10 @@ export const RoomActionTypes = {
   finishRound: "@ROOM/FINISH_ROUND",
   answer: "@ROOM/ANSWER",
   restart: "@ROOM/RESTART",
+  disconnect: {
+    request: "@ROOM/DISCONNECT/REQUEST",
+    success: "@ROOM/DISCONNECT/SUCCESS",
+  },
 };
 
 export interface IPlayer {

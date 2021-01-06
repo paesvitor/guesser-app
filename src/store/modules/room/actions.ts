@@ -24,4 +24,8 @@ export const roomActions = {
   finishRound: () => action(RoomActionTypes.finishRound),
   answer: (answer: any) => action(RoomActionTypes.answer, { answer }),
   restart: () => action(RoomActionTypes.restart),
+  disconnect: {
+    request: () => action(RoomActionTypes.disconnect.request),
+    success: () => action(RoomActionTypes.disconnect.success),
+  },
 };

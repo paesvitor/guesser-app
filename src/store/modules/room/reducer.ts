@@ -44,6 +44,11 @@ const reducer: Reducer<typeof INITIAL_STATE> = (
           ...action.payload.room,
         },
       };
+    case RoomActionTypes.disconnect.success:
+      return {
+        ...state,
+        data: null,
+      };
 
     default:
       return state;

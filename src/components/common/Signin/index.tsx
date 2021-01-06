@@ -33,6 +33,8 @@ function Signin() {
   useEffect(() => {
     if (roomStoreState.data) {
       router.push(`/room/${roomStoreState.data.code}`);
+    } else {
+      router.push("/");
     }
   }, [roomStoreState.data]);
 

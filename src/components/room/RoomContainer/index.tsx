@@ -17,7 +17,7 @@ function RoomContainer() {
   const classes = useStyles();
   const roomStoreState = useSelector((state) => state.room);
   const playerStoreState = useSelector((state) => state.user);
-  const socket = io(`ws://127.0.0.1:3001`);
+  const socket = io(`ws://127.0.0.1:3001/`);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +26,12 @@ function RoomContainer() {
     socket.on(`${roomStoreState.data.code}/update`, (data) => {
       dispatch(roomActions.update(data));
     });
+
+    return () => {
+      if (roomStoreState.data) {
+        dispatch(roomActions.disconnect.request());
+      }
+    };
   }, []);
 
   function renderRoomState() {
@@ -53,13 +59,13 @@ function RoomContainer() {
   }
 
   return (
-    <Box className={classes.root}>
+    <Box className={classes.gameMain}>
       <RoomTimer />
 
-      <Box display="flex" flex={1} overflow="hidden ">
+      <Box className={classes.gameMainWrapper}>
         <RoomPlayerList />
 
-        <section className={classes.gameWrapper}>
+        <section className={classes.gameInnerWrapper}>
           {renderRoomState()}
           {renderGameControl()}
         </section>
