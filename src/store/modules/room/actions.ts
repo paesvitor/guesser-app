@@ -11,10 +11,16 @@ export const roomActions = {
       action(RoomActionTypes.join.success, { room }),
   },
 
+  update: (room: IRoomData) => action(RoomActionTypes.update, { room }),
+
   create: {
     request: () => action(RoomActionTypes.create.request),
     failure: () => action(RoomActionTypes.create.request),
     success: (room: IRoomData) =>
       action(RoomActionTypes.create.request, { room }),
   },
+
+  startNextRound: () => action(RoomActionTypes.startNextRound),
+  finishRound: () => action(RoomActionTypes.finishRound),
+  answer: (answer: any) => action(RoomActionTypes.answer, { answer }),
 };

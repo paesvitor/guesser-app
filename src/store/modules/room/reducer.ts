@@ -37,6 +37,14 @@ const reducer: Reducer<typeof INITIAL_STATE> = (
         error: true,
       };
 
+    case RoomActionTypes.update:
+      return {
+        ...state,
+        data: {
+          ...action.payload.room,
+        },
+      };
+
     default:
       return state;
   }

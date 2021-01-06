@@ -63,7 +63,13 @@ function Signin() {
   }
 
   function handleCreateRoom() {
-    dispatch(roomActions.create.request());
+    if (!userStoreState.name) {
+      enqueueSnackbar("Preencha um nome antes de criar uma sala", {
+        variant: "error",
+      });
+    } else {
+      dispatch(roomActions.create.request());
+    }
   }
 
   function handleChangeUsername(username: string) {

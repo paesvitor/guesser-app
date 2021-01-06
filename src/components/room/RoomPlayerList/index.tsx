@@ -11,11 +11,14 @@ export interface RoomPlayerListProps {
 function RoomPlayerList(props: RoomPlayerListProps) {
   const { ranking } = props;
   const classes = useStyles(props);
-  const roomPlayers = useSelector((state) => state.room.data.players);
+  const room = useSelector((state) => state.room.data);
+  const player = useSelector((state) => state.user);
 
   function renderPlayerCards() {
-    return roomPlayers.map((player) => (
+    return room.players.map((player) => (
       <RoomPlayerCard
+        isSelf={player.name === player.name}
+        isOwner={player.name === room.owner.name}
         key={player.name}
         name={player.name}
         score={player.score}
@@ -30,7 +33,7 @@ function RoomPlayerList(props: RoomPlayerListProps) {
       {!ranking && (
         <Box mb={3}>
           <Typography variant="h3" className={classes.title}>
-            Jogadores <span>{`${roomPlayers.length}/12`}</span>
+            Jogadores <span>{`${room.players.length}/12`}</span>
           </Typography>
         </Box>
       )}

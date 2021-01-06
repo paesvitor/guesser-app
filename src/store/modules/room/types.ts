@@ -7,11 +7,17 @@ export const RoomActionTypes = {
     failure: "@ROOM/JOIN/FAILURE",
   },
 
+  update: "@ROOM/UPDATE",
+
   create: {
     request: "@ROOM/CREATE/REQUEST",
     success: "@ROOM/CREATE/SUCCESS",
     failure: "@ROOM/CREATE/FAILURE",
   },
+
+  startNextRound: "@ROOM/START_NEXT_ROUND",
+  finishRound: "@ROOM/FINISH_ROUND",
+  answer: "@ROOM/ANSWER",
 };
 
 export interface IPlayer {
@@ -24,6 +30,11 @@ export interface IPlayer {
 
 export interface IRoomData {
   code: string;
+  status:
+    | "WAITING_TO_START_GAME"
+    | "READY_TO_ANSWER"
+    | "WAITING_FOR_ROUND"
+    | "GAME_OVER";
   round: {
     canSendAnswer: boolean;
     current: number;
