@@ -18,6 +18,7 @@ export const RoomActionTypes = {
   startNextRound: "@ROOM/START_NEXT_ROUND",
   finishRound: "@ROOM/FINISH_ROUND",
   answer: "@ROOM/ANSWER",
+  restart: "@ROOM/RESTART",
 };
 
 export interface IPlayer {
@@ -26,6 +27,8 @@ export interface IPlayer {
   hasSentHunch: boolean;
   name: string;
   avatar: number;
+  roundScore: number;
+  hunch: number;
 }
 
 export interface IRoomData {

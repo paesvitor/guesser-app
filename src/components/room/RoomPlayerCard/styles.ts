@@ -11,20 +11,22 @@ export const useStyles = makeStyles((theme) => ({
   image: (props: RoomPlayerCardProps) => ({
     borderRadius: "50%",
     backgroundColor: "#000",
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
     border: "4px solid",
-    borderColor: props.ready ? "green" : "red",
+    borderColor: props.ready ? "#59d85e" : "#ff7979",
   }),
 
-  playerName: {
+  playerName: (props: RoomPlayerCardProps) => ({
     fontWeight: 700,
     fontSize: 18,
-  },
 
-  playerSelfName: {
-    color: "red",
-  },
+    ...(props.isSelf && {
+      color: "red",
+    }),
+  }),
+
+  playerSelfName: {},
 
   playerPoints: {
     fontWeight: 400,

@@ -23,4 +23,5 @@ export const roomActions = {
   startNextRound: () => action(RoomActionTypes.startNextRound),
   finishRound: () => action(RoomActionTypes.finishRound),
   answer: (answer: any) => action(RoomActionTypes.answer, { answer }),
+  restart: () => action(RoomActionTypes.restart),
 };

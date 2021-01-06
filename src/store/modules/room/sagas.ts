@@ -147,10 +147,33 @@ function* finishRound(action: ActionType<typeof roomActions.finishRound>) {
   }
 }
 
+function* restart(action: ActionType<typeof roomActions.restart>) {
+  try {
+    const player = yield select(userSelectors.getUser);
+    const code = yield select(roomSelectors.getRoomCode);
+
+    yield api.post(`/rooms/${code}/restart`, {
+      player: {
+        name: player.name,
+      },
+    });
+  } catch (error) {
+    yield put(
+      notificationsActions.enqueue({
+        message: "Erro ao reiniciar a partida",
+        options: {
+          variant: "error",
+        },
+      })
+    );
+  }
+}
+
 export default function* root() {
   yield takeLatest(RoomActionTypes.join.request, join);
   yield takeLatest(RoomActionTypes.create.request, create);
   yield takeLatest(RoomActionTypes.startNextRound, startNextRound);
   yield takeLatest(RoomActionTypes.answer, answer);
   yield takeLatest(RoomActionTypes.finishRound, finishRound);
+  yield takeLatest(RoomActionTypes.restart, restart);
 }

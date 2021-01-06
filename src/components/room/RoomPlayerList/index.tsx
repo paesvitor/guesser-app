@@ -12,20 +12,22 @@ function RoomPlayerList(props: RoomPlayerListProps) {
   const { ranking } = props;
   const classes = useStyles(props);
   const room = useSelector((state) => state.room.data);
-  const player = useSelector((state) => state.user);
+  const playerState = useSelector((state) => state.user);
 
   function renderPlayerCards() {
-    return room.players.map((player) => (
-      <RoomPlayerCard
-        isSelf={player.name === player.name}
-        isOwner={player.name === room.owner.name}
-        key={player.name}
-        name={player.name}
-        score={player.score}
-        avatar={player.avatar}
-        ready={true}
-      />
-    ));
+    return room.players
+      .sort((a, b) => b.score - a.score)
+      .map((player) => (
+        <RoomPlayerCard
+          isSelf={playerState.name === player.name}
+          isOwner={player.name === room.owner.name}
+          key={player.name}
+          name={player.name}
+          score={player.score}
+          avatar={player.avatar}
+          ready={player.hasSentHunch}
+        />
+      ));
   }
 
   return (

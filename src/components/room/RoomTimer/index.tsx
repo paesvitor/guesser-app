@@ -65,7 +65,8 @@ function RoomTimer() {
         </Typography>
       </Box>
 
-      <Box mb={3}>{renderTimeBar()}</Box>
+      {/* <Box mb={1}>{renderTimeBar()}</Box> */}
+      <Box mb={4}></Box>
     </Box>
   );
 }

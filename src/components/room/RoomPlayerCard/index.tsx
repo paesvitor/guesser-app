@@ -15,8 +15,8 @@ export interface RoomPlayerCardProps {
 
 function RoomPlayerCard(props: RoomPlayerCardProps) {
   const { avatar, name, score, isSelf, isOwner } = props;
-
   const classes = useStyles(props);
+  function renderPlayerBadges() {}
 
   return (
     <section className={classes.root}>
@@ -25,7 +25,7 @@ function RoomPlayerCard(props: RoomPlayerCardProps) {
       <Box ml={2}>
         <div
           className={clsx(classes.playerName, isSelf && classes.playerSelfName)}
-        >{`${name} ${isOwner ? "(O)" : ""}`}</div>
+        >{`${name} ${isOwner ? "(H)" : ""}`}</div>
         <div className={classes.playerPoints}>{`${score} pontos`}</div>
       </Box>
     </section>

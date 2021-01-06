@@ -42,7 +42,10 @@ function RoomContainer() {
   }
 
   function renderGameControl() {
-    if (roomStoreState.data.owner.name === playerStoreState.name) {
+    if (
+      roomStoreState.data.owner.name === playerStoreState.name &&
+      roomStoreState.data.status !== "GAME_OVER"
+    ) {
       return <RoomControl />;
     }
 
